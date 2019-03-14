@@ -1,0 +1,28 @@
+<!ELEMENT types-mapping (z-wave-mapping,iqrf-iqhome-mapping)>
+
+<!ELEMENT z-wave-mapping (map)*>
+<!ELEMENT iqrf-iqhome-mapping (map)*>
+<!ELEMENT map ((z-wave|iqrf-iqhome),beeeon)>
+<!ATTLIST map
+	comment        CDATA   #REQUIRED
+>
+
+<!ELEMENT z-wave EMPTY>
+<!ATTLIST z-wave
+	command-class  CDATA   #REQUIRED
+	index          CDATA   "0"
+>
+
+<!ELEMENT beeeon EMPTY>
+<!ATTLIST beeeon
+	type           CDATA   #REQUIRED
+>
+
+<!ELEMENT iqrf-iqhome EMPTY>
+<!ATTLIST iqrf-iqhome
+	id             CDATA   #REQUIRED
+	error-value    CDATA   #REQUIRED
+	wide           CDATA   #REQUIRED
+	resolution     CDATA   #REQUIRED
+	signed         CDATA   #REQUIRED
+>
