@@ -1,0 +1,36 @@
+#pragma once
+
+#include "util/Enum.h"
+
+namespace BeeeOn {
+
+struct GWMessageTypeEnum {
+	enum Raw {
+		DEVICE_ACCEPT_REQUEST,
+		DEVICE_LIST_REQUEST,
+		DEVICE_LIST_RESPONSE,
+		GATEWAY_REGISTER,
+		GATEWAY_ACCEPTED,
+		GENERIC_RESPONSE,
+		GENERIC_ACK,
+		LAST_VALUE_REQUEST,
+		LAST_VALUE_RESPONSE,
+		LISTEN_REQUEST,
+		NEW_DEVICE_GROUP_REQUEST,
+		NEW_DEVICE_REQUEST,
+		RESPONSE_WITH_ACK,
+		SEARCH_REQUEST,
+		SENSOR_DATA_CONFIRM,
+		SENSOR_DATA_EXPORT,
+		SET_VALUE_REQUEST,
+		UNPAIR_REQUEST,
+		UNPAIR_RESPONSE,
+		NOTICE_REQUEST,
+	};
+
+	static EnumHelper<Raw>::ValueMap &valueMap();
+};
+
+typedef Enum<GWMessageTypeEnum> GWMessageType;
+
+}

@@ -1,0 +1,59 @@
+<!ELEMENT system (factory)>
+<!ELEMENT factory (instance|alias)*>
+
+<!ELEMENT constant EMPTY>
+<!ATTLIST constant
+	name    CDATA    #REQUIRED
+	text    CDATA    #IMPLIED
+	time    CDATA    #IMPLIED
+	number  CDATA    #IMPLIED
+	yes-when CDATA   #IMPLIED
+>
+<!ELEMENT instance (set|add)*>
+<!ATTLIST instance
+	name    ID       #IMPLIED
+	class   CDATA    #REQUIRED
+	init    (early|lazy) "lazy"
+	library CDATA    #IMPLIED
+>
+
+<!ELEMENT alias EMPTY>
+<!--
+If @ref is IDREF we cannot use dynamic construction of
+references like ${type}Manager. Thus, be happy with CDATA.
+We cannot use NMTOKEN as it disallows ${...} constructions.
+-->
+<!ATTLIST alias
+	name    ID       #REQUIRED
+	ref     CDATA    #REQUIRED
+>
+
+<!ELEMENT set (pair*)>
+<!-- see note for alias/@ref -->
+<!ATTLIST set
+	name    CDATA    #REQUIRED
+	ref     CDATA    #IMPLIED
+	text    CDATA    #IMPLIED
+	time    CDATA    #IMPLIED
+	list    CDATA    #IMPLIED
+	number  CDATA    #IMPLIED
+	if-yes  CDATA    #IMPLIED
+>
+
+<!ELEMENT add (pair*)>
+<!-- see note for alias/@ref -->
+<!ATTLIST add
+	name    CDATA    #REQUIRED
+	ref     CDATA    #IMPLIED
+	text    CDATA    #IMPLIED
+	time    CDATA    #IMPLIED
+	list    CDATA    #IMPLIED
+	number  CDATA    #IMPLIED
+	if-yes  CDATA    #IMPLIED
+>
+
+<!ELEMENT pair EMPTY>
+<!ATTLIST pair
+	key     CDATA    #REQUIRED
+	text    CDATA    #IMPLIED
+>
